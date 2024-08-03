@@ -15,8 +15,7 @@
         "ext-mbstring": "*",
         "laminas/laminas-escaper": "^2.13",
         "longman/telegram-bot": "^0.83.1",
-        "psr/log": "^3.0",
-        "twilio/sdk": "^8.2"
+        "psr/log": "^3.0"
     },
     "require-dev": {
         "codeigniter/coding-standard": "^1.7",
