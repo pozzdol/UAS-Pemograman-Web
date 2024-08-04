@@ -16,3 +16,5 @@ $routes->post('/auth/forgotPasswordProcess', 'Auth::forgotPasswordProcess');
 $routes->get('/auth/resetPassword', 'Auth::resetPassword');
 $routes->post('/auth/resetPasswordProcess', 'Auth::resetPasswordProcess');
 $routes->post('/telegram/webhook', 'TelegramWebhook::index');
+$routes->get('/dashboard', 'Dashboard::index', ['filter' => 'auth']);
+$routes->get('all-doctors', 'AllDoctors::index', ['filter' => 'auth']);

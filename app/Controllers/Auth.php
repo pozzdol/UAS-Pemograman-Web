@@ -66,9 +66,10 @@ class Auth extends Controller
             if (password_verify($password, $admin['password'])) {
                 session()->set([
                     'username' => $admin['username'],
+                    'nama_lengkap' => $admin['nama_lengkap'],
                     'logged_in' => true
                 ]);
-                return redirect()->to('/');
+                return redirect()->to('/dashboard');
             } else {
                 return redirect()->back()->with('error', 'Invalid Password');
             }
@@ -76,6 +77,7 @@ class Auth extends Controller
             return redirect()->back()->with('error', 'User not found');
         }
     }
+
 
     public function logout()
     {
@@ -120,9 +122,13 @@ class Auth extends Controller
             'text'    => $message,
         ];
 
-        Request::sendMessage($data);
+        $result = Request::sendMessage($data);
 
-        return redirect()->back()->with('success', 'Password reset link has been sent to your Telegram.');
+        if ($result->isOk()) {
+            return redirect()->back()->with('success', 'Password reset link has been sent to your Telegram.');
+        } else {
+            return redirect()->back()->with('error', 'Failed to send Telegram message. Please try again.');
+        }
     }
 
     public function resetPassword()
