@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>All Doctors</title>
+    <title>All Patients</title>
     <link href="<?= base_url('/css/bootstrap.min.css') ?>" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
     <link rel="stylesheet" href="<?= base_url('/css/style.css') ?>">
@@ -16,7 +16,7 @@
     <div class="w-100 fs-5">
         <div class="content-header my-3">
             <div class="container-fluid">
-                <span class="fs-1 fw-semibold">Show All Doctors</span>
+                <span class="fs-1 fw-semibold">Show All Patients</span>
             </div>
         </div>
 
@@ -27,36 +27,36 @@
                 </div>
             <?php endif; ?>
 
-            <div class="tabel-doctors">
+            <div class="tabel-patients">
                 <table class="table table-hover">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col" style="width:30%">Name</th>
-                            <th scope="col">Specialist</th>
-                            <th scope="col">Phone</th>
-                            <th scope="col">Email</th>
-                            <th scope="col" class="text-center">Action</th>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">NIK</th>
+                            <th scope="col">Disease</th>
+                            <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php if (!empty($doctors) && is_array($doctors)) : ?>
-                            <?php foreach ($doctors as $index => $doctor) : ?>
+                        <?php if (!empty($patients) && is_array($patients)) : ?>
+                            <?php foreach ($patients as $index => $patient) : ?>
                                 <tr>
                                     <th scope="row"><?= $index + 1 ?></th>
-                                    <td><?= esc($doctor['name']) ?></td>
-                                    <td><?= esc($doctor['specialist']) ?></td>
-                                    <td><?= esc($doctor['phone']) ?></td>
-                                    <td><?= esc($doctor['email']) ?></td>
-                                    <td class="text-center">
-                                        <a href="<?= base_url('doctors/edit/' . $doctor['id']) ?>" class="btn btn-sm btn-warning">Edit</a>
-                                        <a href="<?= base_url('doctors/delete/' . $doctor['id']) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this doctor?');">Delete</a>
+                                    <td><?= esc($patient['first_name']) ?></td>
+                                    <td><?= esc($patient['last_name']) ?></td>
+                                    <td><?= esc($patient['nik']) ?></td>
+                                    <td><?= esc($patient['disease']) ?></td>
+                                    <td>
+                                        <a href="<?= base_url('patients/edit/' . $patient['id']) ?>" class="btn btn-sm btn-primary">Edit</a>
+                                        <a href="<?= base_url('patients/delete/' . $patient['id']) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this patient?');">Delete</a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
                         <?php else : ?>
                             <tr>
-                                <td colspan="6" class="text-center">No doctors found</td>
+                                <td colspan="6" class="text-center">No patients found</td>
                             </tr>
                         <?php endif; ?>
                     </tbody>
@@ -70,7 +70,7 @@
     <script>
         $(document).ready(function() {
             $(".sub-btn").click(function() {
-                console.log("Doctors button clicked");
+                console.log("Patients button clicked");
 
                 const subMenu = $(this).next(".sub-menu");
 
